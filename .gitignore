@@ -1,9 +1,9 @@
-HELP.md
+supportdesk/HELP.md
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
-./../supportdesk/.env
+.env
 ### STS ###
 .apt_generated
 .classpath
