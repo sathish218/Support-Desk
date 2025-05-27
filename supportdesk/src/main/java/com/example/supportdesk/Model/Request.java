@@ -1,5 +1,6 @@
 package com.example.supportdesk.Model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;  // import Jackson annotation
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 import org.hibernate.annotations.CreationTimestamp;
@@ -25,6 +26,7 @@ public class Request {
     // User association
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
+    @JsonBackReference  // prevents infinite recursion when serializing JSON
     private User user;
 
     public Request() {}

@@ -5,7 +5,9 @@ import com.example.supportdesk.Repository.RequestRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class RequestService {
@@ -14,6 +16,26 @@ public class RequestService {
 
     public RequestService(RequestRepository requestRepository) {
         this.requestRepository = requestRepository;
+    }
+
+    // Get counts of requests grouped by status
+    public Map<String, Long> getStatusCounts() {
+        List<Request> allRequests = requestRepository.findAll();
+
+        return allRequests.stream()
+                .collect(Collectors.groupingBy(
+                        req -> req.getStatus().toLowerCase(),
+                        Collectors.counting()
+                ));
+    }
+    // Get count of unique users who submitted requests
+    public long getUniqueUserCount() {
+        List<Request> allRequests = requestRepository.findAll();
+
+        return allRequests.stream()
+                .map(Request::getEmail)
+                .distinct()
+                .count();
     }
 
     // Save or create a new request

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import com.example.supportdesk.Service.UserService;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/requests")
@@ -29,7 +30,7 @@ public class RequestController {
     @PostMapping
     public ResponseEntity<Request> createRequest(@RequestBody Request request) {
         // Get the currently authenticated user
-        User currentUser = userService.getCurrentUser();  // implement this based on your auth
+        User currentUser = userService.getCurrentUser();
 
         // Associate the user with the request
         request.setUser(currentUser);
@@ -40,6 +41,17 @@ public class RequestController {
 
         Request savedRequest = requestService.saveRequest(request);
         return ResponseEntity.ok(savedRequest);
+    }
+
+    @GetMapping("/status-counts")
+    public ResponseEntity<Map<String, Long>> getStatusCounts() {
+        return ResponseEntity.ok(requestService.getStatusCounts());
+    }
+
+    @GetMapping("/user-count")
+    public ResponseEntity<Map<String, Long>> getUniqueUserCount() {
+        long count = requestService.getUniqueUserCount();
+        return ResponseEntity.ok(Map.of("uniqueUsers", count));
     }
 
     // Get all requests

@@ -1,5 +1,6 @@
 package com.example.supportdesk.Model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,76 +22,43 @@ public class User {
 
     private String role;
 
-    // === Relationship with Request ===
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<Request> requests = new ArrayList<>();
 
-    // === Constructors ===
+    // ✅ Default constructor required by JPA
     public User() {}
 
-    public User(String name, String email, String password, String role) {
-        this.name = name;
+    // Optional constructors for convenience
+    public User(String email) {
         this.email = email;
-        this.password = password;
-        this.role = role;
     }
 
-    // === Getters and Setters ===
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
+    public User(String email, Long id, String name, String password, List<Request> requests, String role) {
+        this.email = email;
         this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
         this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
+        this.requests = requests;
         this.role = role;
     }
 
-    public List<Request> getRequests() {
-        return requests;
-    }
+    // Getters and Setters
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
-    public void setRequests(List<Request> requests) {
-        this.requests = requests;
-    }
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
 
-    public void addRequest(Request request) {
-        requests.add(request);
-        request.setUser(this);
-    }
+    public String getEmail() { return email; }
+    public void setEmail(String email) { this.email = email; }
 
-    public void removeRequest(Request request) {
-        requests.remove(request);
-        request.setUser(null);
-    }
+    public String getPassword() { return password; }
+    public void setPassword(String password) { this.password = password; }
+
+    public String getRole() { return role; }
+    public void setRole(String role) { this.role = role; }
+
+    public List<Request> getRequests() { return requests; }
+    public void setRequests(List<Request> requests) { this.requests = requests; }
 }
