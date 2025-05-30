@@ -1,0 +1,17 @@
+C:\Users\SathishkumarSuganesa\Downloads\supportdesk\supportdesk\src\main\java\com\example\supportdesk\Config\SecurityConfig.java
+C:\Users\SathishkumarSuganesa\Downloads\supportdesk\supportdesk\src\main\java\com\example\supportdesk\Controller\AuthController.java
+C:\Users\SathishkumarSuganesa\Downloads\supportdesk\supportdesk\src\main\java\com\example\supportdesk\Controller\EmailController.java
+C:\Users\SathishkumarSuganesa\Downloads\supportdesk\supportdesk\src\main\java\com\example\supportdesk\Controller\ProfileController.java
+C:\Users\SathishkumarSuganesa\Downloads\supportdesk\supportdesk\src\main\java\com\example\supportdesk\Controller\RequestController.java
+C:\Users\SathishkumarSuganesa\Downloads\supportdesk\supportdesk\src\main\java\com\example\supportdesk\DTO\StatusUpdateRequest.java
+C:\Users\SathishkumarSuganesa\Downloads\supportdesk\supportdesk\src\main\java\com\example\supportdesk\Model\Request.java
+C:\Users\SathishkumarSuganesa\Downloads\supportdesk\supportdesk\src\main\java\com\example\supportdesk\Model\User.java
+C:\Users\SathishkumarSuganesa\Downloads\supportdesk\supportdesk\src\main\java\com\example\supportdesk\Repository\RequestRepository.java
+C:\Users\SathishkumarSuganesa\Downloads\supportdesk\supportdesk\src\main\java\com\example\supportdesk\Repository\UserRepository.java
+C:\Users\SathishkumarSuganesa\Downloads\supportdesk\supportdesk\src\main\java\com\example\supportdesk\Security\CustomUserDetails.java
+C:\Users\SathishkumarSuganesa\Downloads\supportdesk\supportdesk\src\main\java\com\example\supportdesk\Security\JwtAuthenticationFilter.java
+C:\Users\SathishkumarSuganesa\Downloads\supportdesk\supportdesk\src\main\java\com\example\supportdesk\Security\JwtUtil.java
+C:\Users\SathishkumarSuganesa\Downloads\supportdesk\supportdesk\src\main\java\com\example\supportdesk\Service\EmailService.java
+C:\Users\SathishkumarSuganesa\Downloads\supportdesk\supportdesk\src\main\java\com\example\supportdesk\Service\RequestService.java
+C:\Users\SathishkumarSuganesa\Downloads\supportdesk\supportdesk\src\main\java\com\example\supportdesk\Service\UserService.java
+C:\Users\SathishkumarSuganesa\Downloads\supportdesk\supportdesk\src\main\java\com\example\supportdesk\SupportdeskApplication.java
