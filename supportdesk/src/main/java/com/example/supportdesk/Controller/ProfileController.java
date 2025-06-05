@@ -34,7 +34,7 @@ public class ProfileController {
         }
 
         String email = jwtUtil.extractEmail(token);
-        Optional<User> user = userService.getUserByEmail(email);
+        Optional<User> user = userService.getUserByEmail(email); // user email
 
         return user.map(u -> ResponseEntity.ok(Map.of(
                 "id", u.getId(),
