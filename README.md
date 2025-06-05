@@ -25,7 +25,7 @@
 
 - **Frontend:** React.js / HTML / CSS / JavaScript
 - **Backend:** Java Spring Boot
-- **Database:** MySQL / PostgreSQL (or any SQL database)
+- **Database:** MySQL 
 - **Other Tools:** REST APIs, Git, IntelliJ, VS Code
 
 
