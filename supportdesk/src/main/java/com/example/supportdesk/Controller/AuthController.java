@@ -27,9 +27,16 @@ public class AuthController {
         if (userService.emailExists(user.getEmail())) {
             return ResponseEntity.badRequest().body(Map.of("message", "Email already in use"));
         }
+
+        // 🔁 Bind each request to the user (bi-directional relationship)
+        if (user.getRequests() != null) {
+            user.getRequests().forEach(request -> request.setUser(user));
+        }
+
         userService.saveUser(user);
         return ResponseEntity.ok(Map.of("message", "User registered successfully"));
     }
+
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody Map<String, String> loginData) {
         String email = loginData.get("email");
