@@ -1,38 +1,38 @@
 package com.example.supportdesk.Service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.http.*;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 @Service
 public class EmailService {
 
-    @Autowired
-    private JavaMailSender mailSender;
+    private static final String RESEND_API_KEY = "re_RxuhQ2xr_HBYsTbZ2RWD2ioJnF9pp8Thp"; // your Resend API key here
+    private static final String RESEND_API_URL = "https://api.resend.com/emails";
 
-    /**
-     * Sends a simple plain text email.
-     *
-     * @param to Recipient email address
-     * @param subject Email subject
-     * @param body Email body text
-     */
-    public void sendEmail(String to, String subject, String body) {
-        try {
-            // Append the sign-off to the email body
-            String fullBody = body + "\n\nBest regards,\nIT-support team";
+    private final RestTemplate restTemplate = new RestTemplate();
 
-            SimpleMailMessage message = new SimpleMailMessage();
-            message.setTo(to);
-            message.setSubject(subject);
-            message.setText(fullBody);
-            mailSender.send(message);
-            System.out.println("Email sent to " + to);
-        }
-        catch (Exception e) {
-            System.err.println("Error sending email: " + e.getMessage());
-            // You can rethrow or handle exceptions as needed
+    public void sendEmail(String to, String subject, String htmlBody) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        headers.setBearerAuth(RESEND_API_KEY);
+
+        // JSON payload according to Resend API docs
+        String payload = String.format("""
+            {
+                "from": "Support Desk <your_verified_email@domain.com>",
+                "to": ["%s"],
+                "subject": "%s",
+                "html": "%s"
+            }
+            """, to, subject, htmlBody);
+
+        HttpEntity<String> request = new HttpEntity<>(payload, headers);
+
+        ResponseEntity<String> response = restTemplate.postForEntity(RESEND_API_URL, request, String.class);
+
+        if (!response.getStatusCode().is2xxSuccessful()) {
+            throw new RuntimeException("Failed to send email: " + response.getBody());
         }
     }
 }
