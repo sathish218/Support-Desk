@@ -56,7 +56,7 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList("http://localhost:5173","sathish07-support-desk-project.hf.space"));  // Frontend URL
+        configuration.setAllowedOrigins(Arrays.asList("http://localhost:5173","http://sathish07-support-desk-project.hf.space"));  // Frontend URL
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(Arrays.asList("Authorization", "Cache-Control", "Content-Type"));
         configuration.setAllowCredentials(true);  // Important if you send cookies or auth headers
@@ -66,5 +66,5 @@ public class SecurityConfig {
         return source;
     }
 
-    /// ///
+
 }
