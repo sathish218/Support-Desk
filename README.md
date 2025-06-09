@@ -23,7 +23,7 @@
 
 ## 🛠️ Tech Stack
 
-- **Frontend:** React.js / HTML / CSS / JavaScript
+- **Frontend:** React.js
 - **Backend:** Java Spring Boot
 - **Database:** MySQL 
 - **Other Tools:** REST APIs, Git, IntelliJ, VS Code
